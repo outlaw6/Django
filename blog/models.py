@@ -17,7 +17,7 @@ class Post(models.Model):
         self.save()
 
     def approve_comments(self):
-        return self.comments.filter(approve_comments=True)
+        return self.comments.filter(approved_comment=True)
 
     def get_absolute_url(self):
         return reverse("post_detail", kwargs={'pk': self.pk }) # kad se napravi post redirektuje na ovu stranicu
@@ -30,7 +30,7 @@ class Comment(models.Model):
     author = models.CharField(max_length=200)
     text = models.TextField()
     create_date = models.DateTimeField(default=timezone.now)
-    approve_comments = models.BooleanField(default=False)
+    approved_comment = models.BooleanField(default=False)
 
     def approve(self):
         self.approved_comment = True
