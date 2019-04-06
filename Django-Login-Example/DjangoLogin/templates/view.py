@@ -3,6 +3,5 @@ from django.http import HttpResponse
 
 
 def index(request):
-
-
-    pass
+    #my_dict = {'insert_me': "iM FROM views.py"}
+    return render(request, 'index.html')
