@@ -17,9 +17,11 @@ from django.contrib import admin
 from django.urls import path, include
 from Login import views
 from templates import view
+from FORM import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('users/', include('Login.urls')),
-    path('', view.index, name='index')
+    path('', view.index, name='index'),
+    path('formpage/', views.form_name_view, name='form_name' )
 ]
