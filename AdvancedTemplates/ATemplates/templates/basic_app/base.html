@@ -2,9 +2,25 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>NAV + template tagging</title>
   </head>
   <body>
-      <h1>wELCOME TO BASE</h1>
+    <h1>Welcome to Base</h1>
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <ul class="nav navbar-nav">
+          <li> <a class="navbar-brand" href="#">BRAND</a> </li>
+          <li> <a class="navbar-link" href="#">ADMIN</a> </li>
+          <li> <a class="navbar-link" href="#">OTHER</a> </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+      {% block body_block%}
+      <!-- Aythng outside of this will be inherited if extended -->
+      {% endblock %}
+   </div>
   </body>
 </html>
