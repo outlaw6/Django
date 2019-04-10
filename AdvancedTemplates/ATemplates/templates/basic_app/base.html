@@ -3,22 +3,17 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
     <title>NAV + template tagging</title>
   </head>
   <body>
-    <h1>Welcome to Base</h1>
-    <nav class="navbar navbar-default navbar-static-top">
-      <div class="container">
-        <ul class="nav navbar-nav">
-          <li> <a class="navbar-brand" href="#">BRAND</a> </li>
-          <li> <a class="navbar-link" href="#">ADMIN</a> </li>
-          <li> <a class="navbar-link" href="#">OTHER</a> </li>
-        </ul>
-      </div>
+    <nav class="nav">
+      <a class="nav-link active" href="{% url 'index' %}">BRAND</a>
+      <a class="nav-link" href="{% url 'admin:index' %}">ADMIN</a>
+      <a class="nav-link" href="{% url 'basic_app:other'%}">Other</a>
+      <a class="nav-link disabled" href="#">Disabled</a>
     </nav>
     <div class="container">
-      {% block body_block%}
+      {% block body_block %}
       <!-- Aythng outside of this will be inherited if extended -->
       {% endblock %}
    </div>
