@@ -6,6 +6,8 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 
+def inspace(request):
+    return render(request, 'userauth/inspace.html')
 
 def index(request):
     return render(request, 'userauth/index.html')
@@ -64,7 +66,7 @@ def user_login(request):
         if user:
             if user.is_active:
                 login(request, user)
-                return HttpResponseRedirect(reverse('index'))
+                return HttpResponseRedirect(reverse('inspace'))
             else:
                 return HttpResponse('ACCOUNT NOT ACTIVE/OR EXISTING')
         else:

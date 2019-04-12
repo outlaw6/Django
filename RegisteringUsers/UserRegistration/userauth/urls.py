@@ -5,4 +5,5 @@ from userauth import views
 app_name = 'userauth'
 
 urlpatterns = [ url('register/', views.register, name='register'),
-                url('user_login/', views.user_login, name='user_login')]
+                url('user_login/', views.user_login, name='user_login'),
+                url('inspace/', views.inspace, name='inspace')]
