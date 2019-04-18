@@ -1,0 +1,28 @@
+h1 {
+  color: red;
+}
+h2 {
+  color: green;
+}
+
+.text1 {
+  color: red;
+}
+
+body {
+  max-width: 100%;
+  height: auto;
+}
+
+.bgg {
+  /* The image used */
+  background-image: url("/static/images/grim1920.jpg");
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

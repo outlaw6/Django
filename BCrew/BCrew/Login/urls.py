@@ -3,4 +3,4 @@ from Login import views
 
 app_name = 'Login'
 
-urlpatterns = [  url('', views.index, name='index')           ]
+urlpatterns = [  url('register/', views.register, name='register')      ]
