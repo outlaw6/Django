@@ -1,6 +1,11 @@
 from django.shortcuts import render
 from Login.forms import UserProfileInfoForm, UserForm
 
+from django.contrib.auth import authenticte, login, logout
+from django.http import HttpResponseRedirect, HttpResponse
+from django.core.urlresolvers import reverse
+from django.contrib.auth.decorators import login_required
+
 def index(request):
     return render(request, 'Login/index.html')
 
@@ -32,3 +37,26 @@ def register(request):
         user_form = UserForm()
         profile_form = UserProfileInfoForm()
     return render(request, 'Login/registration.html', {'user_form': user_form, 'profile_form': profile_form, 'registered': registered})
+
+
+def ulogin(request):
+
+    if request.method == "POST":
+
+        username = request.POST.get('usernmae') # gets username method
+        password = request.POST.get('password')
+
+        user = authenticte(username=username, password=password) # Djaggo authenticates the username
+
+        if user:
+            if user.is_active:
+                login(request, user)
+                return HttpResponseRedirect(reverse('index'))
+            else:
+                return HttpResponse("Account not active")
+        else:
+            print("Not good, someone tried to login  && Failed")
+            return HttpResponse("Invalid Credentials")
+
+    else:
+        return render(request, 'Login/login.html', {})
