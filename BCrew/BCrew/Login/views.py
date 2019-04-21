@@ -1,22 +1,22 @@
 from django.shortcuts import render
 from Login.forms import UserProfileInfoForm, UserForm
 
-from django.contrib.auth import authenticte, login, logout
+from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 
 def index(request):
     return render(request, 'Login/index.html')
-    
+
 @login_required
 def special(request):
     return HttpResponse("Logged in!")
 
 @login_required
-def user_logoout(request):
+def user_logout(request):
     logout(request)
-    return HttpResponseRedirect(reverse('index'))
+    return HttpResponseRedirect(reverse('Login/index.html'))
 
 def register(request):
 
@@ -55,12 +55,12 @@ def ulogin(request):
         username = request.POST.get('usernmae') # gets username method
         password = request.POST.get('password')
 
-        user = authenticte(username=username, password=password) # Djaggo authenticates the username
+        user = authenticate(username=username, password=password) # Djaggo authenticates the username
 
         if user:
             if user.is_active:
                 login(request, user)
-                return HttpResponseRedirect(reverse('index'))
+                return HttpResponseRedirect(reverse('Login/index.html'))
             else:
                 return HttpResponse("Account not active")
         else:
