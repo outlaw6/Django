@@ -16,7 +16,7 @@ def special(request):
 @login_required
 def user_logout(request):
     logout(request)
-    return HttpResponseRedirect(reverse('Login/index.html'))
+    return HttpResponseRedirect(reverse('index'))
 
 def register(request):
 
@@ -52,7 +52,7 @@ def ulogin(request):
 
     if request.method == "POST":
 
-        username = request.POST.get('usernmae') # gets username method
+        username = request.POST.get('username') # gets username method
         password = request.POST.get('password')
 
         user = authenticate(username=username, password=password) # Djaggo authenticates the username
@@ -60,11 +60,11 @@ def ulogin(request):
         if user:
             if user.is_active:
                 login(request, user)
-                return HttpResponseRedirect(reverse('Login/index.html'))
+                return HttpResponseRedirect(reverse('index'))
             else:
                 return HttpResponse("Account not active")
         else:
-            print("Not good, someone tried to login  && Failed")
+            print("Not good, someone tried to login && Failed")
             return HttpResponse("Invalid Credentials")
 
     else:
