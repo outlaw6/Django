@@ -30,6 +30,8 @@
         <p>{{comment.text|safe|linebreaks}}</p>
         <p>Posted by: {{comment.author}}</p>
        {% endif %}
+       {% empty %}
+       <p>No comments.</p>
     {% endfor %}
 </div>
 {% enblock %}
