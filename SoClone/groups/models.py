@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.urls import reverse
 # Create your models here.
 from django.utils.text import slugify
 import misaka
@@ -34,8 +34,8 @@ class Group(models.Model):
         ordering = ['name']
 
 class GroupMember(models.Model):
-    grup = models.ForeignKey(Group, related_name='memberships')
-    user = models.ForeignKey(User, related_name='user_group')
+    group = models.ForeignKey(Group, related_name='memberships', on_delete=models.CASCADE)
+    user = models.ForeignKey(User, related_name='user_group', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.user.username
